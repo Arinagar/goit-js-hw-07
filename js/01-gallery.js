@@ -25,26 +25,16 @@ function onShowOriginalPicClick(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-  const replaceSrcAttr = () => {
-    pictureCollection.forEach(el => {
-      el.src = el.dataset.source;
-    });
-  };
 
   const instance = basicLightbox.create(`
-    <img src="${pictureCollection[src]}">
+    <img
+      class="modal__image"
+      src="${event.target.dataset.source}"
+      data-source=""
+      alt=""
+    />
 `);
   instance.show();
-  // createModal();
-
-  console.dir(event.target);
 }
-
-// function createModal() {
-//   const instance = basicLightbox.create(`
-//     <img src="" width="800" height="600">
-// `);
-//   instance.show();
-// }
 
 galleryEl.addEventListener('click', onShowOriginalPicClick);
